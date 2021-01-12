@@ -1,0 +1,7 @@
+.local-table{
+    background-color: #79b2ea;
+}
+td{
+    outline: solid 1px black;
+    margin: 5px;
+}
