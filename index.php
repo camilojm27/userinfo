@@ -14,11 +14,7 @@ $PAGE->set_url(new moodle_url('/local/userinfo/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title('Información sobre usuarios');
 $PAGE->requires->js_call_amd('local_userinfo/modal', 'init');
-
-global $DB;
-
-
-$users = $DB->get_records('user');
+$PAGE->navbar->add('Userinfo Plugins', new moodle_url('/local/userinfo/index.php'));
 
 echo $OUTPUT->header();
 
@@ -35,8 +31,6 @@ if (isloggedin()){
 else{
     echo '<h1> Por favor inicia sesión </h1>';
 }
-
-
 
 
 echo $OUTPUT->footer();

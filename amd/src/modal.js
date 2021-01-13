@@ -8,7 +8,7 @@ export const init = () => {
                 type: ModalFactory.types.SAVE_CANCEL,
                 title: "Información sobre usuarios", // Your modal title.
                 body: '<form>\n' +
-                    '    <label>Ingresa el nombre del usuario\n' +
+                    '    <label>Ingresa el nombre de usuario\n' +
                     '        <input id="username-input" name="user" type="text">\n' +
                     '    </label>\n' +
                     '</form>',
@@ -29,7 +29,12 @@ export const init = () => {
                         promises[0].done(function(data) {
 
                             // Console.log(data[0]);
-                            createPerson(data[0]);
+                            if ($.isEmptyObject(data[0])) {
+                                notification.alert('El usuario no existe', 'El usuario que estas intentando buscar ' +
+                                    'no existe, o no estas autorizad@ para verlo');
+                            } else {
+                                createPerson(data[0]);
+                            }
                         }).fail(
                             function(e) {
                                 notification.exception(e);
@@ -55,19 +60,22 @@ function createPerson(data) {
     const newPersonAttribute = [username, firstname, lastname, email,
         `${country} - ${city}`, new Date(firstaccess * 1000), new Date(lastaccess * 1000), suspended];
 
-    while (userRow.firstChild) {
-        userRow.removeChild(userRow.firstChild);
-    }
+    // While (userRow.firstChild) {
+    //     userRow.removeChild(userRow.firstChild);
+    // }
 
-    /* If (userRow.firstChild) {
-        userRow.parentElement.appendChild(document.createElement('tr'));
-    }*/
 
     for (let i = 0; i < newPersonAttribute.length; i++) {
         newPerson[i] = document.createElement('td');
         newPerson[i].innerHTML = newPersonAttribute[i];
     }
 
+    if (userRow.firstChild) {
+        userRow.parentElement.appendChild(document.createElement('tr'));
+        newPerson.forEach(x => userRow.parentElement.lastChild.appendChild(x));
 
-    newPerson.forEach(x => userRow.appendChild(x));
+    } else {
+
+        newPerson.forEach(x => userRow.appendChild(x));
+    }
 }
