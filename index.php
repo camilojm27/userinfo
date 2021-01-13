@@ -10,10 +10,10 @@ require_once(__DIR__ . '/../../config.php');
 
 
 
-$PAGE->set_url(new moodle_url('/local/miplugin/index.php'));
+$PAGE->set_url(new moodle_url('/local/userinfo/index.php'));
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title('Información sobre usuarios');
-$PAGE->requires->js_call_amd('local_miplugin/modal', 'init');
+$PAGE->requires->js_call_amd('local_userinfo/modal', 'init');
 
 global $DB;
 
@@ -29,7 +29,7 @@ $templatecontext = (object)[
 ];
 
 if (isloggedin()){
-    echo $OUTPUT->render_from_template('local_miplugin/index', $templatecontext);
+    echo $OUTPUT->render_from_template('local_userinfo/index', $templatecontext);
 
 }
 else{

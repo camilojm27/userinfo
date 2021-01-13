@@ -35,7 +35,7 @@ export const init = () => {
                                 notification.exception(e);
                             }
                         );
-                    }).fail(notification.exception);
+                    });
 
 
                 });
