@@ -23,33 +23,24 @@
 
     }
 }}
-<h1>List of users</h1>
-{{#users}}
-    <p>{{lastname}}</p>
-
-{{/users}}
+<h1>{{# str }} pluginname, local_userinfo {{/ str }}</h1>
+<p>{{# str }} explanation, local_userinfo {{/ str }}</p>
 <section class="local-userinfo__root">
     <table class="local-table">
         <tr>
-            <th>Nombre de Usuario</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo</th>
-            <th>Pais - Ciudad</th>
-            <th>Primer acceso</th>
-            <th>Ultimo acceso</th>
-            <th>¿Esta suspendido?</th>
+            <th>{{# str }} username, local_userinfo {{/ str }}</th>
+            <th>{{# str }} firstname, local_userinfo {{/ str }}</th>
+            <th>{{# str }} lastname, local_userinfo {{/ str }}</th>
+            <th>{{# str }} email, local_userinfo {{/ str }}</th>
+            <th>{{# str }} countrycity, local_userinfo {{/ str }}</th>
+            <th>{{# str }} faccess, local_userinfo {{/ str }}</th>
+            <th>{{# str }} laccess, local_userinfo {{/ str }}</th>
+            <th>{{# str }} suspended, local_userinfo {{/ str }}</th>
         </tr>
         <tr id="user-row">
 
         </tr>
     </table>
-    <input type="button" class="btn btn-primary" id="create-modal" value="Buscar Usuario">
+    <input type="button" class="btn btn-primary" id="create-modal" value='{{# str }} search_user, local_userinfo {{/ str }}'  >
 
 </section>
-
-{{#js}}
-
-
-
-{{/js}}

@@ -18,9 +18,11 @@ export const init = () => {
                     modal.getRoot().on(ModalEvents.save, function(e) {
                         e.preventDefault();
                         // Console.log(Object.values(modal.getRoot()));
-                        let usernameid = [];
-                        usernameid.push(document.getElementById('username-input').value.toString());
+                        let usernameid = [],
+                            usernameidField = document.getElementById('username-input');
 
+                        usernameid.push(usernameidField.value.toString());
+                        usernameidField.value = '';
 
                         let promises = ajax.call([{
                             methodname: 'core_user_get_users_by_field',

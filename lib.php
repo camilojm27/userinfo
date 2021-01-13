@@ -4,6 +4,6 @@
 
 function local_userinfo_extend_navigation(global_navigation $navigation)
 {
-    $item = $navigation->add('Plugin User Info', new moodle_url('/local/userinfo/index.php'), 0, null, 'local_userinfo');
+    $item = $navigation->add(get_string('pluginname', 'local_userinfo'), new moodle_url('/local/userinfo/index.php'), 0, null, 'local_userinfo');
     $item->showinflatnavigation = true;
 }
